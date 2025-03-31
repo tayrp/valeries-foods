@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.2,
+  "group": "mcfry",
+  "ingredient": {
+    "item": "minecraft:potato"
+  },
+  "result": {
+    "id": "valeries_food:mcfry"
+  }
+}

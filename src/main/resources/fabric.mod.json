@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "valeries_food",
+  "version": "${version}",
+  "name": "Valeries Food",
+  "description": "Some new tasty foods!",
+  "authors": [
+    "Valerie",
+    "MystixMew"
+  ],
+  "contact": {
+    "homepage": "https://github.com/tayrp/valeries-foods",
+    "sources": "https://github.com/tayrp/valeries-foods"
+  },
+  "license": "MIT",
+  "icon": "assets/valeries_food/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.tayrp.valeriesfood.ValeriesFood"
+    ],
+    "client": [
+      "com.tayrp.valeriesfood.ValeriesFoodClient"
+    ],
+    "fabric-datagen": [
+      "com.tayrp.valeriesfood.ValeriesFoodDataGenerator"
+    ]
+  },
+  "mixins": [
+    "valeries_food.mixins.json",
+    {
+      "config": "valeries_food.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*",
+    "polymorph": "*"
+  },
+  "suggests": {
+    "another-mod": "*"
+  },
+  "breaks": {},
+  "custom": {},
+  "jars": [],
+  "conflicts": {},
+  "languageAdapters": {},
+  "recommends": {},
+  "contributors": []
+}
