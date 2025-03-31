@@ -38,10 +38,11 @@
     "fabricloader": ">=0.16.10",
     "minecraft": "~1.21.1",
     "java": ">=21",
-    "fabric-api": "*"
+    "fabric-api": "*",
+    "polymorph": "*"
   },
   "suggests": {
-    "polymorph": "*"
+    "another-mod": "*"
   },
   "breaks": {},
   "custom": {},
