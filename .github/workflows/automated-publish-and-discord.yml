@@ -43,7 +43,7 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.VF_BUILDS }}
-          filename: 'build/libs/*'
+          file: 'build/libs/*'
           username: Valerie's Foods
           commit: '> :sparkles: [%MESSAGE%](<%LINK%>) by [%AUTHOR%](<%AUTHOR_LINK%>)'
           content: |
