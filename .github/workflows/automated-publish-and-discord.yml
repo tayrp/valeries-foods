@@ -33,21 +33,10 @@ jobs:
       - name: Gradle Permissions
         run: chmod +x ./gradlew
 
-      - name: Build
+      - name: Gradle Build
         run: ./gradlew build
 
-      - name: Discord Webhook Publish
-        uses: DrTheodor/discord-webhook-upload-action@v1.2
-        with:
-          url: ${{ secrets.WEBHOOK_URL }}
-          file: build/libs/valeries-food-1.0.0.jar
-          username: Valeries Foods
-          commit: '> :sparkles: [%MESSAGE%](<%LINK%>) by [%AUTHOR%](<%AUTHOR_LINK%>)'
-          message: |
-            New `Valerie's Food` Development/GitHub Release `#${{ github.run_number }}`:
-            %COMMITS%
-
-      - name: Get version
+      - name: Get Mod Version
         id: get_version
         run: echo "::set-output name=version::$(grep 'version' gradle.properties | cut -d'=' -f2 | tr -d ' ')"
 
