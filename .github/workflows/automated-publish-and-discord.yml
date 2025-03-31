@@ -30,6 +30,12 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5
 
+      - name: Ensure gradlew is executable
+        run: chmod +x ./gradlew
+
+      - name: Run datagen
+        run: ./gradlew runDatagen
+
       - name: Build
         run: ./gradlew build
 
