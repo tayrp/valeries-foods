@@ -1,17 +1,7 @@
 name: Automated Releases
 
 on:
-  workflow_dispatch:
-  push:
-    paths:
-      - src/**
-      - build.gradle
-      - gradle.properties
-      - settings.gradle
-      - gradle/**
-      - gradlew
-      - gradlew.bat
-      - versioning.gradle
+  [pull_request, push]
 
 jobs:
   build:
