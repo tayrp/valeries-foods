@@ -36,8 +36,8 @@ jobs:
       - name: Build
         run: ./gradlew build
 
-      - name: Publish artifacts
-        uses: actions-cool/discord-webhook-upload-action@v1.2
+      - name: Discord Webhook Publish
+        uses: tsickert/discord-webhook@v7.0.0
         with:
           url: ${{ secrets.VF_BUILDS }}
           file: 'build/libs/*'
