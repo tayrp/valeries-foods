@@ -1,0 +1,63 @@
+name: Automated Releases
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - src/**
+      - build.gradle
+      - gradle.properties
+      - settings.gradle
+      - gradle/**
+      - gradlew
+      - gradlew.bat
+      - versioning.gradle
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5
+
+      - name: Run datagen
+        run: ./gradlew runDatagen
+
+      - name: Build
+        run: ./gradlew build
+
+      - name: Publish artifacts
+        uses: actions-cool/discord-webhook-upload-action@v1.2
+        with:
+          url: ${{ secrets.VF_BUILDS }}
+          file: 'build/libs/*'
+          username: Valerie's Foods
+          commit: '> :sparkles: [%MESSAGE%](<%LINK%>) by [%AUTHOR%](<%AUTHOR_LINK%>)'
+          message: |
+            New `Valerie's Foods` GitHub build `#${{ github.run_number }}`:
+            %COMMITS%
+
+      - name: Get version
+        id: get_version
+        run: echo "::set-output name=version::$(grep 'version' gradle.properties | cut -d'=' -f2 | tr -d ' ')"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: Release v${{ steps.get_version.outputs.version }}
+          body: |
+            Automated release for `Valerie's Foods` build `#${{ github.run_number }}`.
+          files: build/libs/*
+          draft: false
+          prerelease: false
