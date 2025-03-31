@@ -33,9 +33,6 @@ jobs:
       - name: Gradle Permissions
         run: chmod +x ./gradlew
 
-      - name: Run Data Generation
-        run: ./gradlew runDatagen
-
       - name: Build
         run: ./gradlew build
 
@@ -43,9 +40,9 @@ jobs:
         uses: tsickert/discord-webhook@v7.0.0
         with:
           webhook-url: ${{ secrets.VF_BUILDS }}
-          filename: 'build/libs/valeries-food-1.0.0.jar'
-          username: Valerie's Foods
-          content: New Valerie's Foods GitHub Release Available!
+          filename: "build/libs/valeries-food-1.0.0.jar"
+          username: "Valerie's Foods"
+          content: "New Valerie's Foods GitHub Release Available!"
 
       - name: Get version
         id: get_version
