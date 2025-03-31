@@ -30,25 +30,22 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5
 
-      - name: Ensure gradlew is executable
+      - name: Gradle Permissions
         run: chmod +x ./gradlew
 
-      - name: Run datagen
+      - name: Run Data Generation
         run: ./gradlew runDatagen
 
       - name: Build
         run: ./gradlew build
 
       - name: Discord Webhook Publish
-        uses: DrTheodor/discord-webhook-upload-action@v1.2
+        uses: tsickert/discord-webhook@v7.0.0
         with:
-          url: ${{ secrets.VF_BUILDS }}
-          file: 'build/libs/*'
+          webhook-url: ${{ secrets.VF_BUILDS }}
+          filename: 'build/libs/valeries-food-1.0.0.jar'
           username: Valerie's Foods
-          commit: '> :sparkles: [%MESSAGE%](<%LINK%>) by [%AUTHOR%](<%AUTHOR_LINK%>)'
-          message: |
-            New `Valerie's Foods` GitHub build `#${{ github.run_number }}`:
-            %COMMITS%
+          content: New Valerie's Foods GitHub Release Available!
 
       - name: Get version
         id: get_version
