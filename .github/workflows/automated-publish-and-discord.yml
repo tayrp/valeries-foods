@@ -40,13 +40,13 @@ jobs:
         run: ./gradlew build
 
       - name: Discord Webhook Publish
-        uses: DrTheodor/discord-webhook-upload-action@v1.2
+        uses: tsickert/discord-webhook@v7.0.0
         with:
-          url: ${{ secrets.VF_BUILDS }}
-          file: 'build/libs/*'
+          webhook-url: ${{ secrets.VF_BUILDS }}
+          filename: 'build/libs/*'
           username: Valerie's Foods
           commit: '> :sparkles: [%MESSAGE%](<%LINK%>) by [%AUTHOR%](<%AUTHOR_LINK%>)'
-          message: |
+          content: |
             New `Valerie's Foods` GitHub build `#${{ github.run_number }}`:
             %COMMITS%
 
