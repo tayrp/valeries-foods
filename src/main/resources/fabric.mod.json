@@ -2,11 +2,12 @@
   "schemaVersion": 1,
   "id": "valeries_food",
   "version": "${version}",
-  "name": "Valeries Food",
+  "name": "Valeries Foods",
   "description": "Some new tasty foods!",
   "authors": [
     "Valerie",
-    "MystixMew"
+    "MystixMew",
+    "TayRP"
   ],
   "contact": {
     "homepage": "https://github.com/tayrp/valeries-foods",
@@ -37,11 +38,10 @@
     "fabricloader": ">=0.16.10",
     "minecraft": "~1.21.1",
     "java": ">=21",
-    "fabric-api": "*",
-    "polymorph": "*"
+    "fabric-api": "*"
   },
   "suggests": {
-    "another-mod": "*"
+    "polymorph": "*"
   },
   "breaks": {},
   "custom": {},

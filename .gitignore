@@ -1,6 +1,7 @@
 # gradle
 
 .gradle/
+libs/
 .cache/
 build/
 out/
